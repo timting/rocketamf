@@ -357,9 +357,9 @@ module RocketAMF
         class_name = is_default ? "__default__" : traits[:class_name]
 
         # Write out traits
-        if (class_name && @trait_cache[class_name] != nil)
-          @stream << pack_integer(@trait_cache[class_name] << 2 | 0x01)
-        else
+        #if (class_name && @trait_cache[class_name] != nil)
+        #  @stream << pack_integer(@trait_cache[class_name] << 2 | 0x01)
+        #else
           @trait_cache.add_obj class_name if class_name
 
           # Write out trait header
@@ -378,7 +378,7 @@ module RocketAMF
 
           # Write out members
           traits[:members].each {|m| amf3_write_utf8_vr(m)}
-        end
+        #end
 
         # If externalizable, take externalized data shortcut
         if traits[:externalizable]
